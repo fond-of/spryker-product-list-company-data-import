@@ -9,7 +9,7 @@ interface ProductListCompanyDataImportFacadeInterface
 {
     /**
      * Specification:
-     * - Imports Product List Company ata.
+     * - Imports Product List Company data.
      *
      * @api
      *
