@@ -19,10 +19,10 @@ class ProductListTitleToIdProductListStep implements DataImportStepInterface
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     * 
-     * @throws \Propel\Runtime\Exception\PropelException
-     * @throws \Spryker\Zed\DataImport\Business\Exception\EntityNotFoundException
+     *
      * @throws \Spryker\Zed\DataImport\Business\Exception\InvalidDataException
+     *
+     * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {
@@ -37,10 +37,9 @@ class ProductListTitleToIdProductListStep implements DataImportStepInterface
     /**
      * @param string $productListTitle
      *
-     * @return int
-     *
-     * @throws \Propel\Runtime\Exception\PropelException
      * @throws \Spryker\Zed\DataImport\Business\Exception\EntityNotFoundException
+     *
+     * @return int
      */
     protected function getIdProductListByTitle(string $productListTitle): int
     {

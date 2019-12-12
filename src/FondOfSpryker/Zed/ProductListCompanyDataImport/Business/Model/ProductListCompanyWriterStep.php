@@ -13,8 +13,7 @@ class ProductListCompanyWriterStep extends PublishAwareStep implements DataImpor
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
-     * @throws \Propel\Runtime\Exception\PropelException
-     * @throws \Spryker\Zed\Propel\Business\Exception\AmbiguousComparisonException
+     * @return void
      */
     public function execute(DataSetInterface $dataSet): void
     {
@@ -24,8 +23,9 @@ class ProductListCompanyWriterStep extends PublishAwareStep implements DataImpor
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
-     * @throws \Propel\Runtime\Exception\PropelException
-     * @throws \Spryker\Zed\Propel\Business\Exception\AmbiguousComparisonException
+     * @throws
+     *
+     * @return void
      */
     protected function saveProductListCompany(DataSetInterface $dataSet): void
     {
@@ -33,7 +33,7 @@ class ProductListCompanyWriterStep extends PublishAwareStep implements DataImpor
             ->filterByFkCompany($dataSet[ProductListCompanyDataSetInterface::ID_COMPANY])
             ->filterByFkProductList($dataSet[ProductListCompanyDataSetInterface::ID_PRODUCT_LIST])
             ->findOneOrCreate();
-        
+
         if ($productListCompanyEntity->isNew() === true) {
             $productListCompanyEntity
                 ->setFkProductList($dataSet[ProductListCompanyDataSetInterface::ID_PRODUCT_LIST])
@@ -41,5 +41,4 @@ class ProductListCompanyWriterStep extends PublishAwareStep implements DataImpor
                 ->save();
         }
     }
-
 }

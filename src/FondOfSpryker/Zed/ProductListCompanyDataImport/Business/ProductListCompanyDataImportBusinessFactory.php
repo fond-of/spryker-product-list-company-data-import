@@ -7,15 +7,12 @@ use FondOfSpryker\Zed\ProductListCompanyDataImport\Business\Model\Step\CompanyDe
 use FondOfSpryker\Zed\ProductListCompanyDataImport\Business\Model\Step\ProductListTitleToIdProductListStep;
 use Spryker\Zed\DataImport\Business\DataImportBusinessFactory;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
-use Spryker\Zed\ProductListDataImport\Business\Model\ProductListWriterStep;
-use Spryker\Zed\ProductListDataImport\Business\Model\Step\ProductListKeyToIdProductListStep;
 
 /**
  * @method \FondOfSpryker\Zed\ProductListCompanyDataImport\ProductListCompanyDataImportConfig getConfig()
  */
 class ProductListCompanyDataImportBusinessFactory extends DataImportBusinessFactory
 {
-
     /**
      * @return \Spryker\Zed\DataImport\Business\Model\DataImporterAfterImportAwareInterface|\Spryker\Zed\DataImport\Business\Model\DataImporterBeforeImportAwareInterface|\Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
      */
@@ -50,5 +47,4 @@ class ProductListCompanyDataImportBusinessFactory extends DataImportBusinessFact
     {
         return new CompanyDebtorNumberToIdCompanyStep();
     }
-
 }
