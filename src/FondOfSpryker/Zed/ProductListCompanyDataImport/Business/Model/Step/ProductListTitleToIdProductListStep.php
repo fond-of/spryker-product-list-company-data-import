@@ -28,10 +28,15 @@ class ProductListTitleToIdProductListStep implements DataImportStepInterface
     {
         $productListTitle = $dataSet[ProductListCompanyDataSetInterface::PRODUCT_LIST];
         if (!$productListTitle) {
-            throw new InvalidDataException(sprintf('"%s" is required.', ProductListCompanyDataSetInterface::PRODUCT_LIST));
+            throw new InvalidDataException(sprintf(
+                '"%s" is required.',
+                ProductListCompanyDataSetInterface::PRODUCT_LIST
+            ));
         }
 
-        $dataSet[ProductListCompanyDataSetInterface::ID_PRODUCT_LIST] = $this->getIdProductListByTitle($productListTitle);
+        $dataSet[ProductListCompanyDataSetInterface::ID_PRODUCT_LIST] = $this->getIdProductListByTitle(
+            $productListTitle
+        );
     }
 
     /**
@@ -45,14 +50,19 @@ class ProductListTitleToIdProductListStep implements DataImportStepInterface
     {
         if (!isset($this->idProductListCache[$productListTitle])) {
             /** @var \Orm\Zed\ProductList\Persistence\SpyProductListQuery $productListQuery */
-            $productListQuery = SpyProductListQuery::create()->select(SpyProductListTableMap::COL_ID_PRODUCT_LIST);
+            $productListQuery = SpyProductListQuery::create()
+                ->select(SpyProductListTableMap::COL_ID_PRODUCT_LIST);
 
             /** @var int|null $idProductList */
             $idProductList = $productListQuery->findOneByTitle($productListTitle);
 
             if (!$idProductList) {
-                throw new EntityNotFoundException(sprintf('Could not find Product List by title "%s"', $productListTitle));
+                throw new EntityNotFoundException(sprintf(
+                    'Could not find Product List by title "%s"',
+                    $productListTitle
+                ));
             }
+
             $this->idProductListCache[$productListTitle] = $idProductList;
         }
 

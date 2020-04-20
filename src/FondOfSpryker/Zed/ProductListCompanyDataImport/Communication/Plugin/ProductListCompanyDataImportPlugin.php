@@ -7,7 +7,6 @@ use Generated\Shared\Transfer\DataImporterConfigurationTransfer;
 use Generated\Shared\Transfer\DataImporterReportTransfer;
 use Spryker\Zed\DataImport\Dependency\Plugin\DataImportPluginInterface;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
-use Spryker\Zed\ProductListDataImport\ProductListDataImportConfig;
 
 /**
  * @method \FondOfSpryker\Zed\ProductListCompanyDataImport\Business\ProductListCompanyDataImportFacadeInterface getFacade()
@@ -24,8 +23,9 @@ class ProductListCompanyDataImportPlugin extends AbstractPlugin implements DataI
      *
      * @return \Generated\Shared\Transfer\DataImporterReportTransfer
      */
-    public function import(?DataImporterConfigurationTransfer $dataImporterConfigurationTransfer = null): DataImporterReportTransfer
-    {
+    public function import(
+        ?DataImporterConfigurationTransfer $dataImporterConfigurationTransfer = null
+    ): DataImporterReportTransfer {
         return $this->getFacade()->importProductListCompany($dataImporterConfigurationTransfer);
     }
 

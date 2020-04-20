@@ -20,8 +20,9 @@ class ProductListCompanyDataImportFacade extends AbstractFacade implements Produ
      *
      * @return \Generated\Shared\Transfer\DataImporterReportTransfer
      */
-    public function importProductListCompany(?DataImporterConfigurationTransfer $dataImporterConfigurationTransfer = null): DataImporterReportTransfer
-    {
+    public function importProductListCompany(
+        ?DataImporterConfigurationTransfer $dataImporterConfigurationTransfer = null
+    ): DataImporterReportTransfer {
         return $this->getFactory()
             ->createProductListCompanyDataImport()
             ->import($dataImporterConfigurationTransfer);
