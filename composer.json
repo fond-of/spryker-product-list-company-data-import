@@ -10,7 +10,7 @@
   ],
   "require": {
     "php": ">=7.1",
-    "fond-of-spryker/product-list-company": "dev-spryker_uprgade",
+    "fond-of-spryker/product-list-company": "dev-spryker_upgrade",
     "spryker/data-import": "^1.3.0"
   },
   "require-dev": {
