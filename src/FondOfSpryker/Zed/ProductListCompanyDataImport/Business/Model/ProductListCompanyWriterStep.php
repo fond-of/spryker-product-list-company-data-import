@@ -23,8 +23,6 @@ class ProductListCompanyWriterStep extends PublishAwareStep implements DataImpor
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
-     * @throws
-     *
      * @return void
      */
     protected function saveProductListCompany(DataSetInterface $dataSet): void
