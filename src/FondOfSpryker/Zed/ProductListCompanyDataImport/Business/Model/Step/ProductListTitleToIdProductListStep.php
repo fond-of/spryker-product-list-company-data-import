@@ -27,6 +27,7 @@ class ProductListTitleToIdProductListStep implements DataImportStepInterface
     public function execute(DataSetInterface $dataSet): void
     {
         $productListTitle = $dataSet[ProductListCompanyDataSetInterface::PRODUCT_LIST];
+
         if (!$productListTitle) {
             throw new InvalidDataException(sprintf(
                 '"%s" is required.',
