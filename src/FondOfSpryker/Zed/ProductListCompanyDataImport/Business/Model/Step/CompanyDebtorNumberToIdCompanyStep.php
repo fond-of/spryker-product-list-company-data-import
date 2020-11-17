@@ -5,8 +5,6 @@ namespace FondOfSpryker\Zed\ProductListCompanyDataImport\Business\Model\Step;
 use FondOfSpryker\Zed\ProductListCompanyDataImport\Business\Model\DataSet\ProductListCompanyDataSetInterface;
 use Orm\Zed\Company\Persistence\Map\SpyCompanyTableMap;
 use Orm\Zed\Company\Persistence\SpyCompanyQuery;
-use Orm\Zed\ProductList\Persistence\Map\SpyProductListTableMap;
-use Orm\Zed\ProductList\Persistence\SpyProductListQuery;
 use Spryker\Zed\DataImport\Business\Exception\EntityNotFoundException;
 use Spryker\Zed\DataImport\Business\Exception\InvalidDataException;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
@@ -30,19 +28,23 @@ class CompanyDebtorNumberToIdCompanyStep implements DataImportStepInterface
     {
         $companyDebtorNumber = $dataSet[ProductListCompanyDataSetInterface::DEBTOR_NUMBER];
         if (!$companyDebtorNumber) {
-            throw new InvalidDataException(sprintf('"%s" is required.', ProductListCompanyDataSetInterface::DEBTOR_NUMBER));
+            throw new InvalidDataException(sprintf(
+                '"%s" is required.',
+                ProductListCompanyDataSetInterface::DEBTOR_NUMBER
+            ));
         }
 
-        $dataSet[ProductListCompanyDataSetInterface::ID_COMPANY] = $this->getIdCompanyByDebtorNumber($companyDebtorNumber);
+        $dataSet[ProductListCompanyDataSetInterface::ID_COMPANY] = $this->getIdCompanyByDebtorNumber(
+            $companyDebtorNumber
+        );
     }
 
     /**
      * @param string $companyDebtorNumber
      *
-     * @return int
-     *
-     * @throws \Propel\Runtime\Exception\PropelException
      * @throws \Spryker\Zed\DataImport\Business\Exception\EntityNotFoundException
+     *
+     * @return int
      */
     protected function getIdCompanyByDebtorNumber(string $companyDebtorNumber): int
     {
@@ -53,7 +55,10 @@ class CompanyDebtorNumberToIdCompanyStep implements DataImportStepInterface
             $idCompany = $companyQuery->findOneByDebtorNumber($companyDebtorNumber);
 
             if (!$idCompany) {
-                throw new EntityNotFoundException(sprintf('Could not find Company by debtor number "%s"', $companyDebtorNumber));
+                throw new EntityNotFoundException(sprintf(
+                    'Could not find Company by debtor number "%s"',
+                    $companyDebtorNumber
+                ));
             }
             $this->idCompanyListCache[$companyDebtorNumber] = $idCompany;
         }
